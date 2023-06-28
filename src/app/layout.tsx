@@ -14,13 +14,14 @@ export const metadata = {
 
 interface IProps {
   children: ReactNode;
+  session: any
 }
 
-export default function RootLayout({ children }: IProps) {
+export default function RootLayout({ children, session }: IProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SessionProvider>
+        <SessionProvider session={session}>
           <Header />
           {children}
         </SessionProvider>

@@ -1,20 +1,30 @@
 "use client";
-import { signIn } from "next-auth/react";
-import React, { useRef } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useRef } from "react";
 
 const SignInPage = () => {
   const email = useRef("");
   const password = useRef("");
+  const { data, status } = useSession();
+  const route = useRouter();
+
+  useEffect(() => {
+    if (status === "authenticated") route.replace("/");
+  }, [status]);
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     const res = await signIn("credentials", {
       username: email.current,
       password: password.current,
-      redirect: true,
+      redirect: false,
       callbackUrl: "/",
     });
-    console.log(res);
+    // console.log(res);
+    if (res && res.ok) {
+      route.push("/");
+    }
   };
 
   return (
