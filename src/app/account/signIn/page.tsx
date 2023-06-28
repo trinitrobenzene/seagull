@@ -16,14 +16,15 @@ const SignInPage = () => {
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     const res = await signIn("credentials", {
-      username: email.current,
+      email: email.current,
       password: password.current,
       redirect: false,
       callbackUrl: "/",
     });
-    // console.log(res);
     if (res && res.ok) {
       route.push("/");
+    } else {
+      console.log(res?.error);
     }
   };
 

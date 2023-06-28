@@ -5,7 +5,7 @@ import React from "react";
 const Header = () => {
   const { data: session } = useSession();
   return (
-    <header className="bg-stone-700">
+    <header className="bg-gray-800">
       <div className="flex py-2 justify-between w-4/5 m-auto">
         <ul className="flex gap-6 text-white items-center">
           <li>

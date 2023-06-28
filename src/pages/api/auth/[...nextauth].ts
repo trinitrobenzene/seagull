@@ -12,34 +12,32 @@ export const authOptions: NextAuthOptions = {
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {},
-      authorize(credentials, req) {
+      async authorize(credentials, req) {
         const { email, password } = credentials as {
           email: string;
           password: string;
         };
-        const data = { email, password };
 
-        if (email === "red@mail.com" || password === "123")
-          return {
-            id: "red.18",
-            email: "red@mail.com",
-            name: "Red",
-          };
-        else {
-          return null;
+        if (email === "red@mail.com" && password === "123") {
+          console.log(email);
+          const id = "648ec1afb139d0adfe1e0643";
+          const resp = await fetch(`http://localhost:4000/user/${id}`);
+          return await resp.json();
+        } else {
+          throw new Error("Undefined user...");
         }
 
-        /* const resp = await fetch("https://localhost:4000/auth/login", {
+        /* const resp = await fetch("http://localhost:4000/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(data), // body data type must match "Content-Type" header
         });
+        console.log(resp);
 
         if (resp.ok) {
           const res = await resp.json();
-          console.log(res);
           return res;
         }
         return null; */
