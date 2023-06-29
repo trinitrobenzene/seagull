@@ -31,7 +31,7 @@ const SignInPage = () => {
   return (
     <div className="py-20">
       <form
-        className="w-[300px] m-auto p-4 rounded-xl bg-lime-300"
+        className="w-[300px] m-auto p-4 rounded-xl bg-lime-100 shadow-xl"
         onSubmit={handleSubmit}
       >
         <h1 className="text-3xl">Sign In Page</h1>

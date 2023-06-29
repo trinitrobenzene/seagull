@@ -6,7 +6,7 @@ const Header = () => {
   const { data: session } = useSession();
   return (
     <header className="bg-gray-800">
-      <div className="flex py-2 justify-between w-4/5 m-auto">
+      <div className="flex py-4 justify-between w-4/5 m-auto">
         <ul className="flex gap-6 text-white items-center">
           <li>
             <Link href={"/"}>Home</Link>
@@ -14,7 +14,9 @@ const Header = () => {
           <li>
             <Link href={"/admin"}>Admin</Link>
           </li>
-          <li>Infor</li>
+          <li>
+            <Link href={"/infor"}>Infor</Link>
+          </li>
         </ul>
         {session?.user ? (
           <div className="flex gap-2 items-center">
