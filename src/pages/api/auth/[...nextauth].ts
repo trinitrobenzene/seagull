@@ -23,7 +23,7 @@ export const authOptions: NextAuthOptions = {
           password: string;
         };
 
-        if (email === "red@mail.com" && password === "123") {
+        /* if (email === "red@mail.com" && password === "123") {
           const url1 = `http://localhost:4000/user/648ec1afb139d0adfe1e0643`;
           const url2 = "https://jsonplaceholder.typicode.com/users/1";
           const resp = await fetch(url2);
@@ -53,14 +53,14 @@ export const authOptions: NextAuthOptions = {
           };
         } else {
           throw new Error("Undefined user...");
-        }
+        } */
 
-        /* const resp = await fetch("http://localhost:4000/auth/login", {
+        const resp = await fetch("http://localhost:4000/authen/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data), // body data type must match "Content-Type" header
+          body: JSON.stringify({email, password}), // body data type must match "Content-Type" header
         });
         console.log(resp);
 
@@ -68,7 +68,7 @@ export const authOptions: NextAuthOptions = {
           const res = await resp.json();
           return res;
         }
-        return null; */
+        return null;
       },
     }),
   ],
